@@ -1,4 +1,4 @@
 .gradient-button {
-  background: linear-gradient(to right, #ff7e5f, #feb47b); 
+  background: linear-gradient(to bottom, red, white); 
   {border-radius: 2px;}
 }
