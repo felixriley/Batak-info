@@ -1,7 +1,7 @@
 body {
   background-color: black;
 }
-    .gradient-text {
+h1 {
         background-image: linear-gradient(to bottom, red, white);
     }
 
