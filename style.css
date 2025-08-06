@@ -2,6 +2,6 @@ body {
   background-color: black;
 }
 h1 {
-        background-image: linear-gradient(to bottom, red, white);
+        font-color: linear-gradient(to bottom, red, white);
     }
 
