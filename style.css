@@ -1,4 +1,7 @@
 body {
   background-color: black;
 }
+    .gradient-text {
+        background-image: linear-gradient(to bottom, red, white);
+    }
 
