@@ -1,5 +1,5 @@
 .gradient-button {
-  background: linear-gradient(to bottom, red, white); 
+  background: linear-gradient(to right, #305CDE, #6A5ACD); 
   border: none;
   color: white;
   padding: 20px;
@@ -12,3 +12,20 @@
 }
 
 .rounded {border-radius: 50%;}
+
+
+
+         .btn-grad {background-image: linear-gradient(to right, #4776E6 0%, #8E54E9  51%, #4776E6  100%)}
+         .btn-grad {
+            margin: 10px;
+            padding: 15px 45px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;            
+            box-shadow: 0 0 20px #eee;
+            border-radius: 10px;
+            display: block;
+          }
+         
