@@ -3,137 +3,420 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Architecture of Batak Houses</title>
-    <link rel="stylesheet" href="style.css">
+    <title>The Immersive Architecture of Batak Houses</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" href="/batak.ico" type="image/x-icon">
-</head>
-<body>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://emojicdn.elk.sh/🛖" type="image/svg+xml">
+    <style>
+        :root {
+            --primary-blue: #3b82f6;
+            --primary-purple: #8b5cf6;
+            --text-dark: #1e293b;
+            --bg-light: #f8fafc;
+        }
 
-    <header class="header">
-        <div class="container">
-            <h1>The Architecture of Batak Houses</h1>
-            <p class="subtitle">Discover how these traditional homes of North Sumatra blend practicality, artistry, and meaning in every detail.</p>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Class for all headings, using the new, elegant font */
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* --- Custom Scrollbar --- */
+        .horizontal-scroll-wrapper::-webkit-scrollbar {
+            height: 8px;
+        }
+        .horizontal-scroll-wrapper::-webkit-scrollbar-track {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+        .horizontal-scroll-wrapper::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 10px;
+        }
+        .horizontal-scroll-wrapper::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+
+        /* --- Animations --- */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transition: opacity 0.8s ease-in;
+        }
+
+        .is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Gradient Text --- */
+        .gradient-text {
+            background: linear-gradient(45deg, var(--primary-blue), var(--primary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- Card Styles --- */
+        .card {
+            flex: 0 0 340px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08); /* A cleaner shadow on hover */
+        }
+        
+        /* Smooth zoom effect on card images */
+        .card img {
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .card:hover img {
+            transform: scale(1.02);
+        }
+        
+        /* Spot the Detail Section */
+        #spot-the-detail-container {
+            position: relative;
+            cursor: pointer;
+            line-height: 0;
+            overflow: hidden; /* Ensures the zoom effect doesn't break the container */
+        }
+        
+        /* Smooth zoom effect on the interactive image */
+        #spot-the-detail-container img {
+             transition: transform 0.3s ease-in-out;
+        }
+        
+        #spot-the-detail-container:hover img {
+            transform: scale(1.02);
+        }
+        
+        .detail-hotspot {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 2px solid white;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary-blue), var(--primary-purple));
+            opacity: 0.8;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+            z-index: 10;
+        }
+
+        .detail-hotspot:hover {
+            transform: scale(1.2);
+            opacity: 1;
+        }
+
+        .detail-hotspot.active {
+            transform: scale(1.2);
+            opacity: 1;
+            box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Modal transition for a smoother appearance */
+        #bibliography-modal {
+            transition: opacity 0.3s ease-in-out, visibility 0s 0.3s;
+        }
+        
+        #bibliography-modal.hidden {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0s 0.3s;
+        }
+        
+        #bibliography-modal:not(.hidden) {
+            transition: opacity 0.3s ease-in-out, visibility 0s;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <header class="relative h-screen min-h-[600px] flex items-center justify-center text-center text-white overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1620127649211-e41622359b3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="A traditional Batak house at dusk" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black opacity-60"></div>
+        </div>
+        <div class="relative z-10 p-4 fade-in">
+             <div class="flex justify-center items-center mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            </div>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold font-playfair tracking-tight">The Architecture of Batak Houses</h1>
+            <p class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-gray-200">Discover how these traditional homes of North Sumatra blend practicality, artistry, and meaning in every detail.</p>
         </div>
     </header>
 
     <main>
-        <!-- Section 1: Information about Batak Houses -->
-        <section class="card-section">
-            <div class="container">
-                <h2 class="section-title">What Makes Batak Houses Unique?</h2>
+        <section class="py-20 md:py-32">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12 md:mb-16 fade-in-up">
+                    <h2 class="text-3xl md:text-5xl font-bold font-playfair gradient-text">What Makes Batak Houses Unique?</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-slate-600">A symphony of form, function, and philosophy.</p>
+                </div>
+                <div class="horizontal-scroll-wrapper pb-8 fade-in-up">
+                    <div class="card-container flex gap-8 px-4 md:px-0">
+                        <div class="card bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-200">
+                            <img src="https://images.unsplash.com/photo-1599495632148-552b1092a40a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Batak house on stilts" class="w-full h-52 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-slate-900">Standing Tall on Stilts</h3>
+                                <p class="mt-2 text-slate-600">Batak houses rise high on thick wooden stilts. This provides practical space below for animals and tools, and protects from damp and pests.</p>
+                            </div>
+                        </div>
+                        <div class="card bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-200">
+                            <img src="https://live.staticflickr.com/8158/7473523190_e5b564344e_b.jpg" alt="Intricate Batak carvings" class="w-full h-52 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-slate-900">Carvings Full of Meaning</h3>
+                                <p class="mt-2 text-slate-600">Every `gorga` ornament and color carries a purpose. Red, white, and black paints symbolize the cosmos and act as spiritual protection for the home.</p>
+                            </div>
+                        </div>
+                        <div class="card bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-200">
+                            <img src="https://media.cntraveler.com/photos/5c3e1e237326b43217743936/16:9/w_2560%2Cc_limit/Toba-Lake_GettyImages-912440902.jpg" alt="Wood and bamboo materials" class="w-full h-52 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-slate-900">Built from the Land</h3>
+                                <p class="mt-2 text-slate-600">Using sturdy wood and flexible bamboo tied with ijuk fiber, the Batak people crafted homes perfectly adapted to their environment—strong and earthquake-resistant.</p>
+                            </div>
+                        </div>
+                         <div class="card bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-200">
+                            <img src="https://www.justapack.com/wp-content/uploads/2018/02/DSC04130-1-1024x683.jpg" alt="Batak house interior" class="w-full h-52 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-slate-900">A Space for Community</h3>
+                                <p class="mt-2 text-slate-600">Inside, the house is a single open space, often shared by several families. It's a place for community life, anchored by a special rice granary called the <em>sopo</em>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="horizontal-scroll-wrapper">
-                <div class="card-container">
-                    <!-- Card 1 -->
-                    <div class="card">
-                        <img src="https://placehold.co/600x400/6366f1/ffffff?text=Construction" alt="Batak house construction" class="card-img">
-                        <div class="card-content">
-                            <h3 class="card-title">Stilts</h3>
-                            <p class="card-text">Batak houses are on thick wooden stilts. This not only gives them a commanding look but also provides special space below for animals, tools, or storage.</p>
-                        </div>
+        </section>
+        
+        <section class="py-20 md:py-32 bg-slate-100">
+             <div class="container mx-auto px-4 text-center">
+                 <div class="fade-in-up">
+                    <h2 class="text-3xl md:text-5xl font-bold font-playfair gradient-text">Spot the Detail</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-slate-600">Click on the pulsing circles to learn about specific architectural elements.</p>
+                </div>
+                <div class="mt-12 md:mt-16 grid grid-cols-1 lg:grid-cols-3 gap-8 items-center fade-in-up">
+                    <div id="spot-the-detail-container" class="lg:col-span-2 rounded-2xl overflow-hidden shadow-2xl">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Batak_house_in_Huta_Siallagan%2C_Samosir_Island.jpg" alt="Detailed facade of a Batak house for interactive exploration" class="w-full h-full object-cover">
+                        <div class="detail-hotspot" style="top: 25%; left: 50%;" data-detail="gabled-roof">1</div>
+                        <div class="detail-hotspot" style="top: 60%; left: 75%;" data-detail="singa">2</div>
+                        <div class="detail-hotspot" style="top: 70%; left: 20%;" data-detail="ijuk-fiber">3</div>
+                        <div class="detail-hotspot" style="top: 85%; left: 55%;" data-detail="stilts">4</div>
                     </div>
-                    <!-- Card 2 -->
-                    <div class="card">
-                        <img src="https://placehold.co/600x400/8b5cf6/ffffff?text=Carvings" alt="Batak carvings" class="card-img">
-                        <div class="card-content">
-                            <h3 class="card-title">Carvings And Colours</h3>
-                            <p class="card-text">Every ornament and every color has a purpose. Red, white, and black paints—made from natural materials—symbolize the cosmos, while carvings act as spiritual protection for the house.</p>
-                        </div>
+                    <div id="detail-info-panel" class="text-left p-8 bg-white rounded-2xl border border-slate-200 h-full shadow-lg">
+                        <h3 id="detail-title" class="text-2xl font-bold text-blue-500 font-playfair">Click a Number</h3>
+                        <p id="detail-description" class="mt-4 text-slate-700">Select a hotspot on the image to reveal fascinating details about the craftsmanship and symbolism of Batak architecture.</p>
                     </div>
-                    <!-- Card 3 -->
-                    <div class="card">
-                        <img src="https://placehold.co/600x400/4f46e5/ffffff?text=Materials" alt="Wood and bamboo materials" class="card-img">
-                        <div class="card-content">
-                            <h3 class="card-title">How They Are Made</h3>
-                            <p class="card-text">Using strong wood and flexible bamboo, the Batak people made  homes adapted to their environment they are: strong, sustainable, and long-lasting.</p>
+                </div>
+             </div>
+        </section>
+
+        <section class="py-20 md:py-32">
+            <div class="container mx-auto px-4">
+                 <div class="text-center mb-12 md:mb-16 fade-in-up">
+                    <h2 class="text-3xl md:text-5xl font-bold font-playfair gradient-text">Dalihan Na Tolu: The Three-Legged Stove</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-slate-600">The architecture is a physical manifestation of the Batak social and kinship philosophy.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8 md:gap-12 text-center fade-in-up">
+                    <div class="p-6">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 text-blue-600 mx-auto mb-4">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                         </div>
+                        <h3 class="text-xl font-bold text-slate-900">Hula-hula</h3>
+                        <p class="mt-2 text-slate-600">The wife-giving group, respected as the source of life and blessings. They hold a position of honor in all ceremonies.</p>
                     </div>
-                    <!-- Card 4 -->
-                    <div class="card">
-                        <img src="https://placehold.co/600x400/3b82f6/ffffff?text=Interior" alt="Batak house interior" class="card-img">
-                        <div class="card-content">
-                            <h3 class="card-title">A Space Too Big For One Family</h3>
-                            <p class="card-text">Inside, the house is wide open, usually shared by multiple families. More than just shelter, it was a place where families would live togther.</p>
+                    <div class="p-6">
+                         <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 text-blue-600 mx-auto mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Dongan Tubu</h3>
+                        <p class="mt-2 text-slate-600">Members of the same clan or lineage. They are equals who provide mutual support and solidarity through life's challenges.</p>
+                    </div>
+                    <div class="p-6">
+                         <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 text-blue-600 mx-auto mb-4">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v12"/><path d="M15 5.88 14 10h2l-1 6"/><path d="M3 10v12"/><path d="M19 10v12"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Boru</h3>
+                        <p class="mt-2 text-slate-600">The wife-taking group, who show respect to the Hula-hula. They provide labor and support, completing the circle of social obligation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 md:py-32 bg-slate-100">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12 md:mb-16 fade-in-up">
+                    <h2 class="text-3xl md:text-5xl font-bold font-playfair gradient-text">How Do They Compare?</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-slate-600">Across the archipelago, diverse cultures shape unique homes.</p>
+                </div>
+                <div class="horizontal-scroll-wrapper pb-8 fade-in-up">
+                    <div class="card-container flex gap-8 px-4 md:px-0">
+                        <div class="card bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-200">
+                             <img src="https://images.unsplash.com/photo-1590309531735-635e896f5b99?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Tongkonan house" class="w-full h-52 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-slate-900">Tongkonan (Toraja)</h3>
+                                <p class="mt-2 text-slate-600">Both boast dramatic roofs. But while the Torajan home is adorned with buffalo horns, the Batak version emphasizes protective carvings.</p>
+                            </div>
+                        </div>
+                        <div class="card bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-200">
+                           <img src="https://images.unsplash.com/photo-1627993355415-37466944e839?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Minangkabau house" class="w-full h-52 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-slate-900">Rumah Gadang (Minangkabau)</h3>
+                                <p class="mt-2 text-slate-600">The Rumah Gadang has elegant, sweeping rooflines like buffalo horns. The Batak house feels more solid and fortress-like.</p>
+                            </div>
+                        </div>
+                        <div class="card bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-200">
+                           <img src="https://live.staticflickr.com/5345/30396495883_21903ba970_b.jpg" alt="Bubungan Tinggi house" class="w-full h-52 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-slate-900">Bubungan Tinggi (Banjar)</h3>
+                                <p class="mt-2 text-slate-600">Banjar homes spread wide across lowlands. Batak houses reach upward, their tall, compact form suiting the steep highlands of North Sumatra.</p>
+                            </div>
+                        </div>
+                        <div class="card bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-200">
+                           <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Istana_Lama_Seri_Menanti_at_night.jpg" alt="Rumah Melayu" class="w-full h-52 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-slate-900">Rumah Melayu (Malay)</h3>
+                                <p class="mt-2 text-slate-600">Rumah Melayu is often simpler, with intricate latticework. Batak houses are far more monumental, with heavy timber frames and bold carvings.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section 2: Comparison with Other Indonesian Houses -->
-        <section class="card-section bg-light">
-            <div class="container">
-                <h2 class="section-title">How Do They Compare?</h2>
-            </div>
-            <div class="horizontal-scroll-wrapper">
-                <div class="card-container">
-                    <!-- Comparison Card 1 -->
-                    <div class="card">
-                        <img src="https://placehold.co/600x400/ec4899/ffffff?text=Tongkonan" alt="Tongkonan house" class="card-img">
-                        <div class="card-content">
-                            <h3 class="card-title">Tongkonan (Toraja)</h3>
-                            <p class="card-text">Both the Tongkonan and Batak houses have dramatic roofs. But while the Torajan house is more intimate, the Batak version is more like a large hall.</p>
-                        </div>
-                    </div>
-                    <!-- Comparison Card 2 -->
-                    <div class="card">
-                        <img src="https://placehold.co/600x400/f97316/ffffff?text=Minangkabau" alt="Minangkabau house" class="card-img">
-                        <div class="card-content">
-                            <h3 class="card-title">Rumah Gadang (Minangkabau)</h3>
-                            <p class="card-text">The Rumah Gadang looks almost like a palace with its wave-like rooflines. The Batak house, on the other hand,is more solid and bigger.</p>
-                        </div>
-                    </div>
-                    <!-- Comparison Card 3 -->
-                    <div class="card">
-                        <img src="https://placehold.co/600x400/14b8a6/ffffff?text=Bubungan+Tinggi" alt="Bubungan Tinggi house" class="card-img">
-                        <div class="card-content">
-                            <h3 class="card-title">Bubungan Tinggi (Banjar)</h3>
-                            <p class="card-text">Banjar homes spread wide across the lowlands, while Batak houses reach upward. Their tall, compact form suits the steep terrain of North Sumatra’s highlands.</p>
-                        </div>
-                    </div>
-                    <!-- Comparison Card 4 -->
-                    <div class="card">
-                        <img src="https://placehold.co/600x400/d946ef/ffffff?text=Rumah+Melayu" alt="Rumah Melayu" class="card-img">
-                        <div class="card-content">
-                            <h3 class="card-title">Rumah Melayu (Malay)</h3>
-                            <p class="card-text">The Rumah Melayu is often simpler in design. In contrast, Batak houses are far more elaborate, with timber frames and detailed joints.</p>
-                        </div>
-                    </div>
+        <section class="py-20 md:py-32">
+            <div class="container mx-auto px-4 text-center">
+                 <div class="fade-in-up">
+                    <h2 class="text-3xl md:text-5xl font-bold font-playfair gradient-text">Journey to the Highlands</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-slate-600">Take a virtual tour and see these magnificent structures in their natural environment.</p>
                 </div>
-            </div>
-        </section>
-
-        <!-- New Minecraft Section -->
-        <section class="minecraft-section">
-            <div class="container">
-                <h2 class="section-title">The House built in Minecraft</h2>
-                <p class="minecraft-subtitle">This is built in Minecraft and not a real house.</p>
-                <div class="video-container">
-                    <!-- Note: This is a placeholder video. You can replace the src URL with your actual YouTube video link. -->
-                    <iframe width="100%" height="auto" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Minecraft Batak House Build" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="mt-12 md:mt-16 max-w-4xl mx-auto shadow-2xl rounded-2xl overflow-hidden aspect-video fade-in-up">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/n4aQ1m9a48w?si=m5nJ-F2K6vK-DkG3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
-            </div>
-        </section>
-
-        <!-- Bibliography Button Section -->
-        <section class="cta-section">
-            <div class="container">
-                <h2>Bibliography</h2>
-                <p>Check out the sources and research that gave us the info for this project.</p>
-                <a href="bibliography.html" class="btn-gradient">View Bibliography</a>
             </div>
         </section>
 
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Batak-Info Created for learning and discovery.</p>
+    <footer class="bg-slate-900 text-white">
+        <div class="container mx-auto px-4 py-16">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold font-playfair">Explore Further</h2>
+                <p class="mt-2 text-slate-300">Dive into the research that inspired this project.</p>
+                <button id="show-bibliography" class="mt-8 px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">View Bibliography</button>
+            </div>
+            <div class="mt-12 pt-8 border-t border-slate-700 text-center text-slate-400 text-sm">
+                <p>&copy; 2025 Batak Architectural Study. Created for learning and discovery.</p>
+            </div>
         </div>
     </footer>
+    
+    <div id="bibliography-modal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-8 relative">
+            <button id="close-bibliography" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            <h2 class="text-2xl font-bold font-playfair text-slate-800 mb-6">Bibliography</h2>
+            <div class="space-y-4 text-slate-700 prose">
+                 <p>ArtAsia (n.d.). <em>Indonesian Architecture: The Batak House</em>. [online] Available at: &lt;http://artasia.www2.50megs.com/Indonesia/houses.html&gt; [Accessed 31 July 2025].</p>
+                 <p>Hanan, H. and Wonorahardjo, S. (2012). The Architecture of Batak Toba: An Expression of Living Harmoniously. <em>Nakhara: Journal of Environmental Design and Planning</em>, [online] 8, pp.11-22. Available at: &lt;https://ph01.tci-thaijo.org/index.php/nakhara/article/view/104899&gt; [Accessed 31 July 2025].</p>
+                 <p>Nasution, A.H., Usman, B. and Musyirwan, N. (2015). The Values of Local Wisdom on Toba Batak Traditional House. <em>Procedia - Social and Behavioral Sciences</em>, 202, pp.257–264. doi:10.1016/j.sbspro.2015.08.229.</p>
+            </div>
+        </div>
+    </div>
 
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Scroll Animations ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in-up, .fade-in').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // --- Spot the Detail ---
+            const hotspots = document.querySelectorAll('.detail-hotspot');
+            const detailTitle = document.getElementById('detail-title');
+            const detailDescription = document.getElementById('detail-description');
+            
+            const details = {
+                'gabled-roof': {
+                    title: 'Saddleback Roof',
+                    description: 'The iconic roof, shaped like a saddle or a boat, is designed to be imposing. Its high gables are often decorated with intricate carvings and topped with buffalo horns, symbolizing prosperity.'
+                },
+                'singa': {
+                    title: 'The "Singa"',
+                    description: 'A mythical creature carving found on the gables. The Singa is a powerful protective symbol, believed to ward off evil spirits and bring good fortune to the inhabitants of the house.'
+                },
+                'ijuk-fiber': {
+                    title: 'Ijuk Rope',
+                    description: 'This strong, black fiber from the sugar palm tree is used to tie the wooden joints and beams together. This technique allows the house to be flexible and resilient, especially against earthquakes.'
+                },
+                'stilts': {
+                    title: 'Massive Stilts',
+                    description: 'The entire structure rests on large wooden piles, elevating the living space high above the ground. This protects from flooding and wild animals, and creates a functional space underneath.'
+                }
+            };
+
+            hotspots.forEach(hotspot => {
+                hotspot.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const detailKey = e.target.dataset.detail;
+                    const detailData = details[detailKey];
+
+                    // Update panel
+                    detailTitle.textContent = detailData.title;
+                    detailDescription.textContent = detailData.description;
+                    
+                    // Update active state
+                    hotspots.forEach(h => h.classList.remove('active'));
+                    e.target.classList.add('active');
+                });
+            });
+
+            // --- Bibliography Modal ---
+            const modal = document.getElementById('bibliography-modal');
+            const showButton = document.getElementById('show-bibliography');
+            const closeButton = document.getElementById('close-bibliography');
+
+            showButton.addEventListener('click', () => modal.classList.remove('hidden'));
+            closeButton.addEventListener('click', () => modal.classList.add('hidden'));
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
