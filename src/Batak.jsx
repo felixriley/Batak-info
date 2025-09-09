@@ -190,7 +190,7 @@ export default function Batak() {
             <motion.section
               ref={bibliographyRef}
               className="max-w-7xl mx-auto px-6 py-32"
-              initial={{ opacity: 0, scale: 0.7 }}
+              initial={{ opacity: 0, scale: 1.2 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9 }}
