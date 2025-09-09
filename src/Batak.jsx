@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 
 function GlassCard({ title, description }) {
   return (
@@ -39,20 +39,20 @@ export default function Batak() {
 
       {/* Features Section */}
       <section className="max-w-7xl mx-auto px-6 py-32 grid gap-12 md:grid-cols-2 lg:grid-cols-4">
-        <GlassCard title="Stilts" description="Batak houses are on thick wooden stilts. This not only gives them a commanding look but also provides special space below for animals, tools, or storage." />
-        <GlassCard title="Carvings & Colours" description="All the ornaments and all the colors have a purpose. Red, white, and black paints symbolize the cosmos, while carvings act as spiritual protection." />
-        <GlassCard title="How They Are Made" description="Using strong wood and flexible bamboo, the Batak people made homes adapted to their environment: strong, sustainable, and long-lasting." />
-        <GlassCard title="A Space For Families" description="Inside, the house is wide open, usually shared by many families. More than shelter, it is a place to live together." />
+        <GlassCard title="Stilts" description="Batak houses are on thick wooden stilts, giving them a commanding look and space for storage below." />
+        <GlassCard title="Carvings & Colours" description="Red, white, and black paints symbolize the cosmos, while carvings protect the house spiritually." />
+        <GlassCard title="How They Are Made" description="Strong wood and flexible bamboo make Batak houses durable, sustainable, and climate-adapted." />
+        <GlassCard title="A Space For Families" description="Inside, multiple families can live together, making the house a communal space." />
       </section>
 
       {/* Comparison Section */}
       <section className="max-w-7xl mx-auto px-6 py-32">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">How Do They Compare?</h2>
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
-          <GlassCard title="Tongkonan (Toraja)" description="Both the Tongkonan and Batak houses have dramatic roofs. Batak houses are more like a large hall." />
-          <GlassCard title="Rumah Gadang (Minangkabau)" description="The Rumah Gadang looks almost like a palace, but Batak houses are more solid and bigger." />
-          <GlassCard title="Bubungan Tinggi (Banjar)" description="Banjar homes spread wide; Batak houses reach upward to suit the highlands." />
-          <GlassCard title="Rumah Melayu (Malay)" description="Rumah Melayu is simpler; Batak houses are elaborate with timber frames and detailed joints." />
+          <GlassCard title="Tongkonan (Toraja)" description="Both have dramatic roofs. Batak houses are larger halls, while Tongkonan is more intimate." />
+          <GlassCard title="Rumah Gadang (Minangkabau)" description="Rumah Gadang looks like a palace; Batak houses are bigger and more solid." />
+          <GlassCard title="Bubungan Tinggi (Banjar)" description="Banjar homes spread across lowlands; Batak houses reach upward to fit highlands." />
+          <GlassCard title="Rumah Melayu (Malay)" description="Rumah Melayu is simpler; Batak houses are elaborate with detailed timber frames." />
         </div>
       </section>
 
@@ -60,9 +60,9 @@ export default function Batak() {
       <section className="max-w-7xl mx-auto px-6 py-32">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">Batak Houses vs Australian Houses</h2>
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
-          <GlassCard title="Queenslander House" description="Elevated on stilts, lighter timber, wide verandas for ventilation and flood protection." />
-          <GlassCard title="Modern Australian House" description="Open-plan living and large glass windows, contrasting Batak communal focus and symbolism." />
-          <GlassCard title="Traditional Hut" description="Simpler design suited for local climate, Batak houses are more elaborate and symbolic." />
+          <GlassCard title="Queenslander House" description="Elevated on stilts with wide verandas, suitable for floods and ventilation." />
+          <GlassCard title="Modern Australian House" description="Open-plan living with large glass windows; contrast to Batak communal focus." />
+          <GlassCard title="Traditional Hut" description="Simpler design for the local climate, Batak houses are more symbolic and elaborate." />
         </div>
       </section>
 
