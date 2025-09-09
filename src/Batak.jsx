@@ -1,14 +1,15 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+// Glass Card Component
 function GlassCard({ title, description }) {
   return (
     <motion.div
       whileHover={{ scale: 1.05, y: -5 }}
-      className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-xl transition-transform"
+      className="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 shadow-xl transition-transform"
     >
       <h3 className="text-2xl font-bold mb-3">{title}</h3>
-      <p className="text-white/70 leading-relaxed">{description}</p>
+      <p className="text-white/70">{description}</p>
     </motion.div>
   );
 }
@@ -16,36 +17,36 @@ function GlassCard({ title, description }) {
 export default function Batak() {
   return (
     <div className="bg-[#0a0a0d] text-white font-sans overflow-x-hidden">
-      {/* Hero Section */}
+      {/* HERO SECTION */}
       <section className="relative h-screen flex flex-col justify-center items-center text-center px-6">
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-900 via-black to-teal-900 opacity-30 -z-10" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-purple-900 via-black to-teal-900 opacity-50 -z-10" />
         <motion.h1
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 80 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2 }}
+          transition={{ duration: 1 }}
           className="text-6xl md:text-7xl font-extrabold mb-6"
         >
           The Architecture of Batak Houses
         </motion.h1>
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 0.3 }}
+          transition={{ duration: 1, delay: 0.3 }}
           className="text-xl md:text-2xl text-white/70 max-w-3xl"
         >
           Discover how these traditional homes of North Sumatra blend practicality, artistry, and meaning in every detail.
         </motion.p>
       </section>
 
-      {/* Features Section */}
+      {/* FEATURES */}
       <section className="max-w-7xl mx-auto px-6 py-32 grid gap-12 md:grid-cols-2 lg:grid-cols-4">
         <GlassCard title="Stilts" description="Batak houses are on thick wooden stilts, giving them a commanding look and space for storage below." />
-        <GlassCard title="Carvings & Colours" description="Red, white, and black paints symbolize the cosmos, while carvings protect the house spiritually." />
+        <GlassCard title="Carvings & Colours" description="Red, white, and black paints symbolize the cosmos, while carvings act as spiritual protection." />
         <GlassCard title="How They Are Made" description="Strong wood and flexible bamboo make Batak houses durable, sustainable, and climate-adapted." />
         <GlassCard title="A Space For Families" description="Inside, multiple families can live together, making the house a communal space." />
       </section>
 
-      {/* Comparison Section */}
+      {/* COMPARISONS */}
       <section className="max-w-7xl mx-auto px-6 py-32">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">How Do They Compare?</h2>
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
@@ -56,7 +57,7 @@ export default function Batak() {
         </div>
       </section>
 
-      {/* Australia Comparison Section */}
+      {/* AUSTRALIA COMPARISON */}
       <section className="max-w-7xl mx-auto px-6 py-32">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">Batak Houses vs Australian Houses</h2>
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
@@ -66,7 +67,7 @@ export default function Batak() {
         </div>
       </section>
 
-      {/* Minecraft Section */}
+      {/* MINECRAFT */}
       <section className="max-w-7xl mx-auto px-6 py-32">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">Minecraft Build</h2>
         <div className="relative aspect-w-16 aspect-h-9">
@@ -80,7 +81,7 @@ export default function Batak() {
         </div>
       </section>
 
-      {/* Bibliography */}
+      {/* BIBLIOGRAPHY */}
       <section className="max-w-7xl mx-auto px-6 py-32">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">Bibliography</h2>
         <ul className="space-y-3 text-white/70 list-disc list-inside">
