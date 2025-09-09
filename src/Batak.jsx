@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
 
 function GlassCard({ title, description }) {
   return (
@@ -16,11 +16,22 @@ function GlassCard({ title, description }) {
 export default function Batak() {
   const [zoomed, setZoomed] = useState(false);
   const bibliographyRef = useRef(null);
+  const scrollY = useMotionValue(0);
 
-  // Lock scroll at the start
   useEffect(() => {
     document.body.style.overflow = zoomed ? "auto" : "hidden";
   }, [zoomed]);
+
+  useEffect(() => {
+    const handleScroll = () => scrollY.set(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [scrollY]);
+
+  // Parallax for background circles
+  const circle1Y = useTransform(scrollY, [0, 1000], [0, 50]);
+  const circle2Y = useTransform(scrollY, [0, 1000], [0, -50]);
+  const circle3Y = useTransform(scrollY, [0, 1000], [-10, 20]);
 
   const scrollToBibliography = () => {
     bibliographyRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -49,16 +60,19 @@ export default function Batak() {
           >
             {/* Glowing circles background */}
             <motion.div
+              style={{ y: circle1Y }}
               className="absolute w-96 h-96 rounded-full bg-purple-600/40 blur-3xl top-1/4 left-1/4"
               animate={{ x: [0, 50, 0], y: [0, 50, 0] }}
               transition={{ duration: 15, repeat: Infinity, repeatType: "loop" }}
             />
             <motion.div
+              style={{ y: circle2Y }}
               className="absolute w-96 h-96 rounded-full bg-blue-500/40 blur-3xl bottom-1/4 right-1/4"
               animate={{ x: [0, -50, 0], y: [0, -50, 0] }}
               transition={{ duration: 18, repeat: Infinity, repeatType: "loop" }}
             />
             <motion.div
+              style={{ y: circle3Y }}
               className="absolute w-72 h-72 rounded-full bg-purple-400/30 blur-3xl top-1/3 right-1/4"
               animate={{ x: [-20, 20, -20], y: [10, -10, 10] }}
               transition={{ duration: 12, repeat: Infinity, repeatType: "loop" }}
@@ -186,12 +200,12 @@ export default function Batak() {
               </div>
             </motion.section>
 
-            {/* BIBLIOGRAPHY */}
+            {/* BIBLIOGRAPHY WITH ZOOM OUT + PARALLAX */}
             <motion.section
               ref={bibliographyRef}
               className="max-w-7xl mx-auto px-6 py-32"
-              initial={{ opacity: 0, scale: 1.2 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, scale: 1.3, y: 50 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9 }}
             >
