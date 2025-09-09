@@ -2,9 +2,14 @@ import React from "react";
 import { motion } from "framer-motion";
 
 export default function BatakHouseLanding() {
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+  };
+
   return (
     <div className="bg-[#07060A] text-white min-h-screen relative font-sans overflow-x-hidden">
-      
+
       {/* Background Gradients */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute -top-40 -left-40 w-[60rem] h-[60rem] rounded-full bg-gradient-to-tr from-purple-700 to-teal-400 opacity-10 blur-3xl rotate-12" />
@@ -17,6 +22,7 @@ export default function BatakHouseLanding() {
         <nav className="space-x-6 hidden md:flex text-white/70">
           <a href="#architecture" className="hover:text-white">Architecture</a>
           <a href="#compare" className="hover:text-white">Compare</a>
+          <a href="#aus-compare" className="hover:text-white">Australia</a>
           <a href="#minecraft" className="hover:text-white">Minecraft</a>
           <a href="#bibliography" className="hover:text-white">Bibliography</a>
         </nav>
@@ -24,7 +30,7 @@ export default function BatakHouseLanding() {
 
       {/* Hero Section */}
       <section className="flex flex-col items-center justify-center h-screen text-center px-8">
-        <motion.h1 
+        <motion.h1
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
@@ -53,7 +59,14 @@ export default function BatakHouseLanding() {
       </section>
 
       {/* Features Section */}
-      <section id="architecture" className="max-w-6xl mx-auto px-8 py-20 grid gap-12 md:grid-cols-2">
+      <motion.section
+        id="architecture"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={sectionVariants}
+        className="max-w-6xl mx-auto px-8 py-20 grid gap-12 md:grid-cols-2"
+      >
         <FeatureCard 
           title="Stilts"
           description="Batak houses are on thick wooden stilts. This not only gives them a commanding look but also provides special space below for animals, tools, or storage."
@@ -70,10 +83,17 @@ export default function BatakHouseLanding() {
           title="A Space For Lots Of People"
           description="Inside, the house is wide open, usually shared by many families. More than just shelter, it was a place where families would live together."
         />
-      </section>
+      </motion.section>
 
-      {/* Comparison Section */}
-      <section id="compare" className="max-w-6xl mx-auto px-8 py-20">
+      {/* Original Comparison Section */}
+      <motion.section
+        id="compare"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={sectionVariants}
+        className="max-w-6xl mx-auto px-8 py-20"
+      >
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -89,10 +109,51 @@ export default function BatakHouseLanding() {
           <CompareCard title="Bubungan Tinggi (Banjar)" description="Banjar homes spread wide across the lowlands, while Batak houses reach upward. Their tall, compact form suits the steep terrain of North Sumatra’s highlands."/>
           <CompareCard title="Rumah Melayu (Malay)" description="The Rumah Melayu is often simpler in design. In contrast, Batak houses are far more elaborate, with timber frames and detailed joints."/>
         </div>
-      </section>
+      </motion.section>
+
+      {/* Australian Comparison Section */}
+      <motion.section
+        id="aus-compare"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={sectionVariants}
+        className="max-w-6xl mx-auto px-8 py-20"
+      >
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-4xl md:text-5xl font-bold text-center mb-12"
+        >
+          Batak Houses vs Australian Houses
+        </motion.h2>
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <CompareCard
+            title="Queenslander House"
+            description="Australian Queenslander homes are built elevated on stilts for ventilation and flood protection. Unlike Batak houses, they are often made from lighter timber and have wide verandas for shade."
+          />
+          <CompareCard
+            title="Modern Australian House"
+            description="Modern Australian homes often prioritize open-plan living and large glass windows. Batak houses, in contrast, focus on communal space and spiritual symbolism."
+          />
+          <CompareCard
+            title="Traditional Australian Hut"
+            description="Traditional huts were simpler and suited for local climates. Batak houses are more elaborate with carvings and symbolic colors representing the cosmos."
+          />
+        </div>
+      </motion.section>
 
       {/* Minecraft Section */}
-      <section id="minecraft" className="max-w-6xl mx-auto px-8 py-20">
+      <motion.section
+        id="minecraft"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={sectionVariants}
+        className="max-w-6xl mx-auto px-8 py-20"
+      >
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -123,10 +184,17 @@ export default function BatakHouseLanding() {
             ></iframe>
           </div>
         </motion.div>
-      </section>
+      </motion.section>
 
       {/* Bibliography */}
-      <section id="bibliography" className="max-w-6xl mx-auto px-8 py-20">
+      <motion.section
+        id="bibliography"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={sectionVariants}
+        className="max-w-6xl mx-auto px-8 py-20"
+      >
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -141,7 +209,7 @@ export default function BatakHouseLanding() {
           <li>Hanan, H. and Wonorahardjo, S. (2012). The Architecture of Batak Toba: An Expression of Living Harmoniously. <a href="https://ph01.tci-thaijo.org/index.php/nakhara/article/view/104899" className="underline">Link</a> [Accessed 31 July 2025]</li>
           <li>Nasution, A.H., Usman, B. and Musyirwan, N. (2015). The Values of Local Wisdom on Toba Batak Traditional House. Procedia - Social and Behavioral Sciences, 202, pp.257–264. doi:10.1016/j.sbspro.2015.08.229</li>
         </ul>
-      </section>
+      </motion.section>
 
       <footer className="text-center py-12 text-white/60">
         © 2025 Batak-Info Created for learning and discovery.
@@ -153,8 +221,9 @@ export default function BatakHouseLanding() {
 // Feature Card
 function FeatureCard({ title, description }) {
   return (
-    <motion.div 
-      whileHover={{ scale: 1.03, y: -5 }} 
+    <motion.div
+      whileHover={{ scale: 1.03, y: -5 }}
+      transition={{ type: "spring", stiffness: 200, damping: 20 }}
       className="p-8 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 shadow-lg"
     >
       <h3 className="text-2xl font-semibold mb-3">{title}</h3>
@@ -166,8 +235,9 @@ function FeatureCard({ title, description }) {
 // Comparison Card
 function CompareCard({ title, description }) {
   return (
-    <motion.div 
-      whileHover={{ scale: 1.03 }} 
+    <motion.div
+      whileHover={{ scale: 1.03 }}
+      transition={{ type: "spring", stiffness: 200, damping: 20 }}
       className="p-6 rounded-3xl bg-white/5 border border-white/10 shadow-lg"
     >
       <h4 className="font-semibold mb-2">{title}</h4>
