@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 export default function BatakHouseLanding() {
   return (
     <div className="bg-[#07060A] text-white min-h-screen relative font-sans overflow-x-hidden">
+      
       {/* Background Gradients */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute -top-40 -left-40 w-[60rem] h-[60rem] rounded-full bg-gradient-to-tr from-purple-700 to-teal-400 opacity-10 blur-3xl rotate-12" />
@@ -16,32 +17,43 @@ export default function BatakHouseLanding() {
         <nav className="space-x-6 hidden md:flex text-white/70">
           <a href="#architecture" className="hover:text-white">Architecture</a>
           <a href="#compare" className="hover:text-white">Compare</a>
+          <a href="#minecraft" className="hover:text-white">Minecraft</a>
           <a href="#bibliography" className="hover:text-white">Bibliography</a>
         </nav>
       </header>
 
-      {/* Hero */}
-      <section className="max-w-6xl mx-auto px-8 py-20 text-center">
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
+      {/* Hero Section */}
+      <section className="flex flex-col items-center justify-center h-screen text-center px-8">
+        <motion.h1 
+          initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-5xl md:text-6xl font-extrabold mb-6"
+          transition={{ duration: 1 }}
+          className="text-6xl md:text-7xl font-extrabold mb-6 leading-tight"
         >
           The Architecture of Batak Houses
-        </motion.h2>
+        </motion.h1>
         <motion.p
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto"
+          transition={{ duration: 1, delay: 0.3 }}
+          className="text-xl md:text-2xl text-white/70 max-w-3xl"
         >
           Discover how these traditional homes of North Sumatra blend practicality, artistry, and meaning in every detail.
         </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.6 }}
+          className="mt-12"
+        >
+          <a href="#architecture" className="px-8 py-4 bg-gradient-to-r from-purple-700 to-teal-400 rounded-full font-semibold hover:scale-105 transition-transform">
+            Explore
+          </a>
+        </motion.div>
       </section>
 
-      {/* Features */}
-      <section id="architecture" className="max-w-6xl mx-auto px-8 grid gap-12 md:grid-cols-2 mb-20">
+      {/* Features Section */}
+      <section id="architecture" className="max-w-6xl mx-auto px-8 py-20 grid gap-12 md:grid-cols-2">
         <FeatureCard 
           title="Stilts"
           description="Batak houses are on thick wooden stilts. This not only gives them a commanding look but also provides special space below for animals, tools, or storage."
@@ -60,21 +72,70 @@ export default function BatakHouseLanding() {
         />
       </section>
 
-      {/* Comparison */}
-      <section id="compare" className="max-w-6xl mx-auto px-8 mb-20">
-        <h3 className="text-3xl font-bold mb-8 text-center">How Do They Compare?</h3>
+      {/* Comparison Section */}
+      <section id="compare" className="max-w-6xl mx-auto px-8 py-20">
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-4xl md:text-5xl font-bold text-center mb-12"
+        >
+          How Do They Compare?
+        </motion.h2>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           <CompareCard title="Tongkonan (Toraja)" description="Both the Tongkonan and Batak houses have dramatic roofs. But while the Torajan house is more intimate, the Batak version is more like a large hall."/>
           <CompareCard title="Rumah Gadang (Minangkabau)" description="The Rumah Gadang looks almost like a palace with its wave-like rooflines. The Batak house, on the other hand, is more solid and bigger."/>
           <CompareCard title="Bubungan Tinggi (Banjar)" description="Banjar homes spread wide across the lowlands, while Batak houses reach upward. Their tall, compact form suits the steep terrain of North Sumatra’s highlands."/>
           <CompareCard title="Rumah Melayu (Malay)" description="The Rumah Melayu is often simpler in design. In contrast, Batak houses are far more elaborate, with timber frames and detailed joints."/>
-          <MinecraftCard youtubeId="YOUR_VIDEO_ID" /> {/* Replace YOUR_VIDEO_ID */}
         </div>
       </section>
 
+      {/* Minecraft Section */}
+      <section id="minecraft" className="max-w-6xl mx-auto px-8 py-20">
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-4xl md:text-5xl font-bold text-center mb-12"
+        >
+          The House built in Minecraft
+        </motion.h2>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="p-8 rounded-3xl bg-white/5 border border-white/10 shadow-lg backdrop-blur-md flex flex-col gap-6"
+        >
+          <p className="text-white/70 text-center md:text-lg">
+            This is built in Minecraft and can be watched in the video below.
+          </p>
+          <div className="aspect-w-16 aspect-h-9">
+            <iframe
+              className="w-full h-full rounded-2xl border border-white/10"
+              src={`https://www.youtube.com/embed/YOUR_VIDEO_ID`}
+              title="Minecraft Batak House"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </motion.div>
+      </section>
+
       {/* Bibliography */}
-      <section id="bibliography" className="max-w-6xl mx-auto px-8 mb-20">
-        <h3 className="text-3xl font-bold mb-6">Bibliography</h3>
+      <section id="bibliography" className="max-w-6xl mx-auto px-8 py-20">
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-4xl md:text-5xl font-bold text-center mb-12"
+        >
+          Bibliography
+        </motion.h2>
         <ul className="space-y-3 text-white/70 list-disc list-inside">
           <li>ArtAsia (n.d.). Indonesian Architecture: The Batak House. <a href="http://artasia.www2.50megs.com/Indonesia/houses.html" className="underline">Link</a> [Accessed 31 July 2025]</li>
           <li>Hanan, H. and Wonorahardjo, S. (2012). The Architecture of Batak Toba: An Expression of Living Harmoniously. <a href="https://ph01.tci-thaijo.org/index.php/nakhara/article/view/104899" className="underline">Link</a> [Accessed 31 July 2025]</li>
@@ -82,53 +143,35 @@ export default function BatakHouseLanding() {
         </ul>
       </section>
 
-      <footer className="text-center py-10 text-white/60">
+      <footer className="text-center py-12 text-white/60">
         © 2025 Batak-Info Created for learning and discovery.
       </footer>
     </div>
   );
 }
 
-// Feature card
+// Feature Card
 function FeatureCard({ title, description }) {
   return (
-    <motion.div
-      whileHover={{ y: -5 }}
-      className="p-6 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 shadow-lg"
+    <motion.div 
+      whileHover={{ scale: 1.03, y: -5 }} 
+      className="p-8 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 shadow-lg"
     >
-      <h4 className="text-xl font-semibold mb-3">{title}</h4>
+      <h3 className="text-2xl font-semibold mb-3">{title}</h3>
       <p className="text-white/70">{description}</p>
     </motion.div>
   );
 }
 
-// Comparison card
+// Comparison Card
 function CompareCard({ title, description }) {
   return (
-    <motion.div whileHover={{ scale: 1.03 }} className="p-6 rounded-3xl bg-white/5 border border-white/10 shadow-lg">
-      <h5 className="font-semibold mb-2">{title}</h5>
+    <motion.div 
+      whileHover={{ scale: 1.03 }} 
+      className="p-6 rounded-3xl bg-white/5 border border-white/10 shadow-lg"
+    >
+      <h4 className="font-semibold mb-2">{title}</h4>
       <p className="text-white/70">{description}</p>
-    </motion.div>
-  );
-}
-
-// Minecraft section with embedded YouTube
-function MinecraftCard({ youtubeId }) {
-  const url = `https://www.youtube.com/embed/${youtubeId}`;
-  return (
-    <motion.div whileHover={{ scale: 1.03 }} className="p-6 rounded-3xl bg-white/5 border border-white/10 shadow-lg flex flex-col gap-4">
-      <h5 className="font-semibold mb-2">The House built in Minecraft</h5>
-      <p className="text-white/70">This is built in Minecraft and can be watched in the video below.</p>
-      <div className="aspect-w-16 aspect-h-9">
-        <iframe
-          className="w-full h-full rounded-2xl border border-white/10"
-          src={url}
-          title="Minecraft Batak House"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
-      </div>
     </motion.div>
   );
 }
