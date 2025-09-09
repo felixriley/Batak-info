@@ -6,10 +6,10 @@ function GlassCard({ title, description }) {
   return (
     <motion.div
       whileHover={{ scale: 1.05, y: -5 }}
-      className="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 shadow-xl transition-transform"
+      className="bg-white/5 backdrop-blur-3xl border border-white/10 rounded-3xl p-8 shadow-xl transition-transform"
     >
       <h3 className="text-2xl font-bold mb-3">{title}</h3>
-      <p className="text-white/70">{description}</p>
+      <p className="text-white/70 leading-relaxed">{description}</p>
     </motion.div>
   );
 }
@@ -18,8 +18,13 @@ export default function Batak() {
   return (
     <div className="bg-[#0a0a0d] text-white font-sans overflow-x-hidden">
       {/* HERO SECTION */}
-      <section className="relative h-screen flex flex-col justify-center items-center text-center px-6">
-        <div className="absolute inset-0 bg-gradient-to-tr from-purple-900 via-black to-teal-900 opacity-50 -z-10" />
+      <section className="relative h-screen flex flex-col justify-center items-center text-center overflow-hidden">
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-tr from-purple-900 via-black to-teal-900 opacity-50 -z-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2 }}
+        />
         <motion.h1
           initial={{ opacity: 0, y: 80 }}
           animate={{ opacity: 1, y: 0 }}
@@ -36,6 +41,18 @@ export default function Batak() {
         >
           Discover how these traditional homes of North Sumatra blend practicality, artistry, and meaning in every detail.
         </motion.p>
+
+        {/* Floating circles for parallax background */}
+        <motion.div
+          className="absolute w-72 h-72 rounded-full bg-purple-700 opacity-20 top-1/4 left-1/4 blur-3xl"
+          animate={{ x: [0, 50, 0], y: [0, 50, 0] }}
+          transition={{ duration: 20, repeat: Infinity, repeatType: "loop" }}
+        />
+        <motion.div
+          className="absolute w-96 h-96 rounded-full bg-teal-700 opacity-20 bottom-1/4 right-1/4 blur-3xl"
+          animate={{ x: [0, -50, 0], y: [0, -50, 0] }}
+          transition={{ duration: 25, repeat: Infinity, repeatType: "loop" }}
+        />
       </section>
 
       {/* FEATURES */}
