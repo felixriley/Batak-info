@@ -116,9 +116,46 @@ export default function BatakHouseCanvas() {
           </div>
         </motion.div>
       </motion.section>
+<section id="bibliography" className="max-w-6xl mx-auto px-8 py-32">
+  <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
+    Bibliography
+  </h2>
+  <ul className="space-y-3 text-white/70 list-disc list-inside">
+    <li>
+      ArtAsia (n.d.). Indonesian Architecture: The Batak House.{" "}
+      <a 
+        href="http://artasia.www2.50megs.com/Indonesia/houses.html" 
+        className="underline hover:text-teal-400"
+        target="_blank" 
+        rel="noopener noreferrer"
+      >
+        Link
+      </a>{" "}
+      [Accessed 31 July 2025]
+    </li>
+    <li>
+      Hanan, H. and Wonorahardjo, S. (2012). The Architecture of Batak Toba: An Expression of Living Harmoniously. Nakhara: Journal of Environmental Design and Planning, 8, pp.11-22.{" "}
+      <a 
+        href="https://ph01.tci-thaijo.org/index.php/nakhara/article/view/104899" 
+        className="underline hover:text-teal-400"
+        target="_blank" 
+        rel="noopener noreferrer"
+      >
+        Link
+      </a>{" "}
+      [Accessed 31 July 2025]
+    </li>
+    <li>
+      Nasution, A.H., Usman, B. and Musyirwan, N. (2015). The Values of Local Wisdom on Toba Batak Traditional House. Procedia - Social and Behavioral Sciences, 202, pp.257–264.{" "}
+      <a 
+        href="https://doi.org/10.1016/j.sbspro.2015.08.229" 
+        className="underline hover:text-teal-400"
+        target="_blank" 
+        rel="noopener noreferrer"
+      >
+        DOI
+      </a>
+    </li>
+  </ul>
+</section>
 
-      {/* Bibliography */}
-      <motion.section id="bibliography" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={sectionVariants} className="max-w-6xl mx-auto px-8 py-32">
-        <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="text-4xl md:text-5xl font-bold text-center mb-12">Bibliography</motion.h2>
-        <ul className="space-y-3 text-white/70 list-disc list-inside">
-          <li>ArtAsia (n.d.). Indonesian Architecture: The Batak House. <a href="http://artasia.www2.50megs.com/Indonesia/houses.html" className="underline">Link</a> [Accessed 31 July 2025
