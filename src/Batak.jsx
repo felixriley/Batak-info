@@ -65,49 +65,55 @@ export default function Batak() {
             {/* Background glowing circles */}
             <motion.div
               style={{ y: circle1Y }}
-              className="absolute w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-purple-600/40 blur-3xl top-1/4 left-1/4"
+              className="absolute w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-purple-600/40 blur-3xl top-1/4 left-1/4 z-0"
               animate={{ x: [0, 50, 0], y: [0, 50, 0] }}
               transition={{ duration: 15, repeat: Infinity, repeatType: "loop" }}
             />
             <motion.div
               style={{ y: circle2Y }}
-              className="absolute w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-blue-500/40 blur-3xl bottom-1/4 right-1/4"
+              className="absolute w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-blue-500/40 blur-3xl bottom-1/4 right-1/4 z-0"
               animate={{ x: [0, -50, 0], y: [0, -50, 0] }}
               transition={{ duration: 18, repeat: Infinity, repeatType: "loop" }}
             />
             <motion.div
               style={{ y: circle3Y }}
-              className="absolute w-56 sm:w-72 h-56 sm:h-72 rounded-full bg-purple-400/30 blur-3xl top-1/3 right-1/4"
+              className="absolute w-56 sm:w-72 h-56 sm:h-72 rounded-full bg-purple-400/30 blur-3xl top-1/3 right-1/4 z-0"
               animate={{ x: [-20, 20, -20], y: [10, -10, 10] }}
               transition={{ duration: 12, repeat: Infinity, repeatType: "loop" }}
             />
 
-            <motion.h1
-              initial={{ scale: 1.2, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 1.2 }}
-              className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-6 px-4"
-            >
-              The Architecture of Batak Houses
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1.2, delay: 0.2 }}
-              className="text-base sm:text-lg md:text-2xl text-white/70 max-w-3xl mb-12 px-4"
-            >
-              Discover how these traditional homes of North Sumatra blend
-              practicality, artistry, and meaning in every detail.
-            </motion.p>
+            {/* CONTENT ABOVE BACKGROUND */}
+            <div className="relative z-10 px-4">
+              <motion.h1
+                initial={{ scale: 1.2, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 1.2 }}
+                className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-6"
+              >
+                The Architecture of Batak Houses
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1.2, delay: 0.2 }}
+                className="text-base sm:text-lg md:text-2xl text-white/70 max-w-3xl mb-12 mx-auto"
+              >
+                Discover how these traditional homes of North Sumatra blend
+                practicality, artistry, and meaning in every detail.
+              </motion.p>
 
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setZoomed(true)}
-              className="px-6 sm:px-8 py-3 sm:py-4 bg-teal-500 rounded-full text-base sm:text-lg font-bold shadow-lg hover:bg-teal-400 transition"
-            >
-              Discover
-            </motion.button>
+              <motion.button
+                initial={{ scale: 0.9 }}
+                animate={{ scale: [0.9, 1.05, 1] }}
+                transition={{ repeat: Infinity, repeatType: "loop", duration: 1.5 }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setZoomed(true)}
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-teal-500 rounded-full text-base sm:text-lg font-bold shadow-lg hover:bg-teal-400 transition"
+              >
+                Discover
+              </motion.button>
+            </div>
           </motion.section>
         )}
       </AnimatePresence>
@@ -258,15 +264,15 @@ export default function Batak() {
             <motion.section
               ref={bibliographyRef}
               className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20"
-              initial={{ opacity: 0, scale: 1.2 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, scale: 1.3, y: 50 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9 }}
             >
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8">
                 Bibliography
               </h2>
-              <ul className="space-y-4 text-left text-sm sm:text-base md:text-lg text-white/70 max-w-3xl mx-auto">
+              <ul className="space-y-3 text-white/70 list-disc list-inside text-sm sm:text-base">
                 <li>
                   ArtAsia (n.d.). Indonesian Architecture: The Batak House.{" "}
                   <a
@@ -280,8 +286,8 @@ export default function Batak() {
                   [Accessed 31 July 2025]
                 </li>
                 <li>
-                  Hanan, H. and Wonorahardjo, S. (2012). The Architecture of Batak
-                  Toba.{" "}
+                  Hanan, H. and Wonorahardjo, S. (2012). The Architecture of
+                  Batak Toba.{" "}
                   <a
                     href="https://ph01.tci-thaijo.org/index.php/nakhara/article/view/104899"
                     className="underline hover:text-teal-400"
@@ -307,7 +313,7 @@ export default function Batak() {
               </ul>
             </motion.section>
 
-            <footer className="text-center py-12 text-xs sm:text-sm md:text-base text-white/50">
+            <footer className="text-center py-12 text-white/50">
               © 2025 Batak-Info. Created for learning and discovery.
             </footer>
           </motion.main>
