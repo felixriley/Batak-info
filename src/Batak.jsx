@@ -250,13 +250,13 @@ export default function Batak() {
     Minecraft Build
   </h2>
   <motion.div
-    className="relative aspect-w-16 aspect-h-9 rounded-3xl border border-white/10 shadow-xl overflow-hidden"
+    className="relative w-full aspect-w-16 aspect-h-9 rounded-3xl border border-white/10 shadow-xl overflow-hidden"
     initial={{ scale: 0.97 }}
     animate={{ scale: [0.97, 1.03, 0.97] }}
     transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
   >
     <iframe
-      className="w-full h-full"
+      className="absolute top-0 left-0 w-full h-full"
       src="https://www.youtube.com/embed/Gwodj6jA6qY"
       title="Minecraft Batak House"
       frameBorder="0"
@@ -265,6 +265,7 @@ export default function Batak() {
     />
   </motion.div>
 </motion.section>
+
 
 {/* KAHOOT */}
 <motion.section
