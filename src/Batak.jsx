@@ -252,7 +252,7 @@ export default function Batak() {
               <div className="relative aspect-w-16 aspect-h-9">
                 <iframe
                   className="w-full h-full rounded-3xl border border-white/10 shadow-xl"
-                  src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+                  src="https://youtu.be/Gwodj6jA6qY?si=aMB1QsLCyAwl35y2"
                   title="Minecraft Batak House"
                   frameBorder="0"
                   allowFullScreen
