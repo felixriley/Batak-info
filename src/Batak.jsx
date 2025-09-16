@@ -218,17 +218,17 @@ export default function Batak() {
                   {
                     title: "Queenslander House",
                     description:
-                      "Elevated on stilts with wide verandas, suitable for floods and ventilation.",
+                      "Similar stilts and also made to resist water, structure on the stilts is different.",
                   },
                   {
                     title: "Modern Australian House",
                     description:
-                      "Open-plan living with large glass windows; contrast to Batak communal focus.",
+                      "Not similar at all, modern houses are on the ground and have a different structure..",
                   },
                   {
                     title: "Traditional Hut",
                     description:
-                      "Simpler design for the local climate, Batak houses are more symbolic and elaborate.",
+                      "Australian huts are smaller and are made to withstand different climates.",
                   },
                 ].map((item, idx) => (
                   <motion.div key={idx} variants={cardVariants}>
