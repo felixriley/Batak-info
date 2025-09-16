@@ -260,6 +260,28 @@ export default function Batak() {
               </div>
             </motion.section>
 
+               {/* KAHOOT */}
+            <motion.section
+              className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.9 }}
+            >
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12">
+                Kahoot to Play
+              </h2>
+              <div className="relative aspect-w-16 aspect-h-9">
+                <iframe
+                  className="w-full h-full rounded-3xl border border-white/10 shadow-xl"
+                  src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+                  title="Kahoot"
+                  frameBorder="0"
+                  allowFullScreen
+                />
+              </div>
+            </motion.section
+              
             {/* BIBLIOGRAPHY */}
             <motion.section
               ref={bibliographyRef}
