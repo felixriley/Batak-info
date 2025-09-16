@@ -237,8 +237,7 @@ export default function Batak() {
                 ))}
               </div>
             </motion.section>
-
-{/* MINECRAFT - LARGE VIDEO */}
+{/* MINECRAFT - FIXED HEIGHT */}
 <motion.section
   className="w-full px-4 sm:px-6 lg:px-8 py-20 flex justify-center"
   initial={{ opacity: 0, y: 50 }}
@@ -246,12 +245,12 @@ export default function Batak() {
   viewport={{ once: true }}
   transition={{ duration: 0.9 }}
 >
-  <div className="text-center w-full max-w-6xl">
+  <div className="text-center w-full max-w-5xl">
     <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-12">
       Minecraft Build
     </h2>
     <motion.div
-      className="relative w-full aspect-w-16 aspect-h-9 rounded-3xl border border-white/10 shadow-xl overflow-hidden mx-auto"
+      className="relative w-full h-[500px] rounded-3xl border border-white/10 shadow-xl overflow-hidden mx-auto"
       initial={{ scale: 0.97 }}
       animate={{ scale: [0.97, 1.03, 0.97] }}
       transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
@@ -269,7 +268,7 @@ export default function Batak() {
 </motion.section>
 
 
-
+            
 {/* KAHOOT */}
 <motion.section
   className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20"
