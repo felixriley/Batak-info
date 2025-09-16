@@ -314,7 +314,7 @@ export default function Batak() {
             </motion.section>
 
             <footer className="text-center py-12 text-white/50">
-              © 2025 Batak-Info. Created for learning and discovery.
+              © 2025 Batak Info. Created to get invited to the pizza party.
             </footer>
           </motion.main>
         )}
