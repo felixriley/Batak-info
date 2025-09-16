@@ -276,7 +276,7 @@ export default function Batak() {
                 <li>
                   ArtAsia (n.d.). Indonesian Architecture: The Batak House.{" "}
                   <a
-                    href="http://artasia.www2.50megs.com/Indonesia/houses.html"
+                    href="https://www.sciencedirect.com/science/article/pii/S1877042815033285?ref=pdf_download&fr=RR-2&rr=97fcbb46ca565738"
                     className="underline hover:text-teal-400"
                     target="_blank"
                     rel="noopener noreferrer"
