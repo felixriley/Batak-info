@@ -238,33 +238,36 @@ export default function Batak() {
               </div>
             </motion.section>
 
-{/* MINECRAFT */}
+{/* MINECRAFT - LARGE VIDEO */}
 <motion.section
-  className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20"
+  className="w-full px-4 sm:px-6 lg:px-8 py-20 flex justify-center"
   initial={{ opacity: 0, y: 50 }}
   whileInView={{ opacity: 1, y: 0 }}
   viewport={{ once: true }}
   transition={{ duration: 0.9 }}
 >
-  <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12">
-    Minecraft Build
-  </h2>
-  <motion.div
-    className="relative w-full aspect-w-16 aspect-h-9 rounded-3xl border border-white/10 shadow-xl overflow-hidden"
-    initial={{ scale: 0.97 }}
-    animate={{ scale: [0.97, 1.03, 0.97] }}
-    transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-  >
-    <iframe
-      className="absolute top-0 left-0 w-full h-full"
-      src="https://www.youtube.com/embed/Gwodj6jA6qY"
-      title="Minecraft Batak House"
-      frameBorder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowFullScreen
-    />
-  </motion.div>
+  <div className="text-center w-full max-w-6xl">
+    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-12">
+      Minecraft Build
+    </h2>
+    <motion.div
+      className="relative w-full aspect-w-16 aspect-h-9 rounded-3xl border border-white/10 shadow-xl overflow-hidden mx-auto"
+      initial={{ scale: 0.97 }}
+      animate={{ scale: [0.97, 1.03, 0.97] }}
+      transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+    >
+      <iframe
+        className="absolute top-0 left-0 w-full h-full"
+        src="https://www.youtube.com/embed/Gwodj6jA6qY"
+        title="Minecraft Batak House"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      />
+    </motion.div>
+  </div>
 </motion.section>
+
 
 
 {/* KAHOOT */}
