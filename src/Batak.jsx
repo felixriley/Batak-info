@@ -282,7 +282,7 @@ export default function Batak() {
   </h2>
   <div className="flex justify-center">
     <motion.a
-      href="https://kahoot.it/challenge/YOUR_KAHOOT_ID"
+      href="https://kahoot.it/"
       target="_blank"
       rel="noopener noreferrer"
       className="px-8 py-4 rounded-2xl text-lg font-semibold shadow-lg transition bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 hover:opacity-90"
