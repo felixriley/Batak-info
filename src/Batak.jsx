@@ -249,12 +249,6 @@ export default function Batak() {
     <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-12">
       Minecraft Build
     </h2>
-    <motion.div
-      className="relative w-full h-[500px] rounded-3xl border border-white/10 shadow-xl overflow-hidden mx-auto"
-      initial={{ scale: 0.97 }}
-      animate={{ scale: [0.97, 1.03, 0.97] }}
-      transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-    >
       <iframe
         className="absolute top-0 left-0 w-full h-full"
         src="https://www.youtube.com/embed/Gwodj6jA6qY"
@@ -263,7 +257,6 @@ export default function Batak() {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
       />
-    </motion.div>
   </div>
 </motion.section>
 
